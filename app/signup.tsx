@@ -1,12 +1,19 @@
-import { View, Text, StyleSheet, Image, TextInput } from "react-native";
-import React from "react";
+import { View, Text, StyleSheet, Image, TextInput, Alert } from "react-native";
+import React, { useState } from "react";
 import { useRouter } from "expo-router";
 import MyButton from "@/app-example/components/MyButton";
 
 const signup = () => {
   const router = useRouter();
+  const [name, setName] = useState("");
+  const [pass, setPass] = useState("");
+  const [cpass, setCpass] = useState("");
   const onLogin = () => {
-    router.navigate("/todo");
+    if (!name || !pass || !cpass) {
+      Alert.alert("Warning", "Please fill requriedField");
+      return;
+    }
+    router.navigate("/login");
   };
   return (
     <View style={styles.container}>
@@ -15,9 +22,24 @@ const signup = () => {
         style={styles.img}
       />
       <View style={styles.main}>
-        <TextInput placeholder="Enter Name" style={styles.input} />
-        <TextInput placeholder="Enter PassWord" style={styles.input} />
-        <TextInput placeholder="Enter Confirm PassWord" style={styles.input} />
+        <TextInput
+          placeholder="Enter Name"
+          style={styles.input}
+          value={name}
+          onChangeText={(e) => setName(e)}
+        />
+        <TextInput
+          placeholder="Enter PassWord"
+          style={styles.input}
+          value={pass}
+          onChangeText={(e) => setPass(e)}
+        />
+        <TextInput
+          placeholder="Enter Confirm PassWord"
+          style={styles.input}
+          value={cpass}
+          onChangeText={(e) => setCpass(e)}
+        />
 
         <MyButton title={"SignUp"} onPress={onLogin} />
       </View>

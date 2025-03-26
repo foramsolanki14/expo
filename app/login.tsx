@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, TextInput } from "react-native";
+import { View, Text, StyleSheet, Image, TextInput, Alert } from "react-native";
 import React, { useState } from "react";
 import MyButton from "@/app-example/components/MyButton";
 import { useRouter } from "expo-router";
@@ -6,7 +6,11 @@ import { useRouter } from "expo-router";
 const login = () => {
   const router = useRouter();
   const onRegister = () => {
-    router.navigate("/signup");
+    if (!name || !pass) {
+      Alert.alert("warning", "Please requried filed");
+      return;
+    }
+    router.navigate("/todo");
   };
   const [name, setName] = useState();
   const [pass, setPass] = useState();
@@ -21,13 +25,13 @@ const login = () => {
           placeholder="Enter Name"
           style={styles.input}
           value={name}
-          onChangeText={() => setName}
+          onChangeText={(e: any) => setName(e)}
         />
         <TextInput
           placeholder="Enter PassWord"
           style={styles.input}
           value={pass}
-          onChangeText={(e) => setPass}
+          onChangeText={(e: any) => setPass(e)}
         />
 
         <MyButton title={"login"} onPress={onRegister} />

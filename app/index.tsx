@@ -6,7 +6,7 @@ import { useRouter } from "expo-router";
 const index = () => {
   const router = useRouter();
   const onContine = () => {
-    router.navigate("/login");
+    router.navigate("/signup");
   };
   return (
     <View style={styles.container}>
