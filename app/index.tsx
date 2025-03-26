@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import React from "react";
 import MyButton from "@/app-example/components/MyButton";
 import { useRouter } from "expo-router";
@@ -10,6 +10,7 @@ const index = () => {
   };
   return (
     <View style={styles.container}>
+      <Text>Welcome To Text</Text>
       <MyButton title={"Contine"} onPress={onContine} />
     </View>
   );
