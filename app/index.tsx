@@ -10,7 +10,7 @@ const index = () => {
   };
   return (
     <View style={styles.container}>
-      <Text>Welcome To Text</Text>
+      <Text>Welcome</Text>
       <MyButton title={"Contine"} onPress={onContine} />
     </View>
   );
